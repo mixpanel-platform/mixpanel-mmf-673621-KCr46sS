@@ -104,14 +104,14 @@
           };
           
           if (events.length == 1) {
-            $('.results-text').html("Error: Please select atleast 2 events.").css("color", "red");
+            $('.results-text').html("Error: Please select at least 2 events.").css("color", "red");
           } else {
             $('.results-text').html("");
             var params =  $.extend({}, dateRange, {
               'events': events,
               'limit': 100, // maximum number of results to return
-              'length': interval // number of days each user has to complete the funnel
-              
+              'length': interval, // number of days each user has to complete the funnel
+              'where': properties["campaign_idd"] == ('input[name="property-name-field"]').val())
             });
             console.log($('#property').find('input[name="property-name-field"]').val());
             MP.api.funnel(params).done(function(results) {
