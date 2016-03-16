@@ -113,7 +113,7 @@
               'length': interval // number of days each user has to complete the funnel
               
             });
-            console.log('#property').find('input[name="property-name-field"').val();
+            console.log($('#property').find('input[name="property-name-field"').val());
             MP.api.funnel(params).done(function(results) {
               output = {};
               finalOutput = '<h1 style="font-size: 18px; color: rgb(95,105,131)">Results:</h1></br>';
