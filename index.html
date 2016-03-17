@@ -107,14 +107,14 @@
             $('.results-text').html("Error: Please select at least 2 events.").css("color", "red");
           } else {
             $('.results-text').html("");
-            var campaign = $('#property').find('input[name="property-name-field"]').val();
+            var campaign_id = $('#property').find('input[name="property-name-field"]').val();
             var params =  $.extend({}, dateRange, {
               'events': events,
               'limit': 100, // maximum number of results to return
               'length': interval // number of days each user has to complete the funnel
             
             });
-            if (typeof campaign !== 'undefined'){
+            if (typeof campaign_id !== 'undefined'){
               params['where'] = 'properties["campaign_id"] == ' + campaign_id;
               console.log(params['where']);
             }
