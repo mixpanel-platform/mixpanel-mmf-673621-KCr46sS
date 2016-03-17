@@ -107,12 +107,17 @@
             $('.results-text').html("Error: Please select at least 2 events.").css("color", "red");
           } else {
             $('.results-text').html("");
+            var campaign = $('#property').find('input[name="property-name-field"]').val();
             var params =  $.extend({}, dateRange, {
               'events': events,
               'limit': 100, // maximum number of results to return
-              'length': interval, // number of days each user has to complete the funnel
-              'where': properties["campaign_idd"] == ('input[name="property-name-field"]').val())
+              'length': interval // number of days each user has to complete the funnel
+            
             });
+            if (typeof campaign !== 'undefined'){
+              params['where'] = 'properties["campaign_id"] == ' + campaign_id;
+              console.log(params['where']);
+            }
             console.log($('#property').find('input[name="property-name-field"]').val());
             MP.api.funnel(params).done(function(results) {
               output = {};
